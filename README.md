@@ -17,9 +17,12 @@ cp .env.example .env
 
 Выставляем нужные настройки в `.env`
 
-KC_HOSTNAME=ваш_ip                           ### Укажите на каком ip будут работать сервисы ###
+KC_HOSTNAME=ваш_ip                      # Укажите на каком ip будут работать сервисы 
+
 BASE_URL=http://ваш_ip:16580/    
+
 KC_SERVER_PUBLIC_URL=http://ваш_ip:8080/   
+
 
 ## Настройки по `keycloak` для `api_gateway`
 Чтобы правильно настроить работу keycloak с api_gateway нужно запустить первым делом keycloak_web (и keycloakdb) и настроить его через web-интерфейс.
@@ -49,7 +52,7 @@ docker-compose up --build -d keycloak_web
     - Client type: `OpenID Connect`
     - Client ID: Название для client'а, это название -> `.env`, как `KC_CLIENT_ID`
     - Нажимаем "Next"
-- На 2 странице всключаем флаг "Client authentication" и "Next"
+- На 2 странице выключаем флаг "Client authentication" и "Next"
 - На 3 странице не меняем настройки и нажимаем "Save"
 
 Теперь должна открыться страница с данным клиентом и его настройки, вам нужно добавить настройки (пример настроек):
@@ -76,12 +79,10 @@ docker-compose up --build -d keycloak_web
 4. Нажимаем "Create user"
 5. Заходим в "Credentials" и устанавливаем пароль для пользователя (убрать галочку с Temporary)
 
-И запускам проект через **docker-compose**:
+Теперь можем запускать проект через **docker-compose**:
 ```bash
 docker-compose up --build -d
 ```
-
-### 5. Теперь можем запускать `api_gateway`
 
 ### 6. Тест авторизации
 Для проверки работы API в целом можем пойти этим путем:
